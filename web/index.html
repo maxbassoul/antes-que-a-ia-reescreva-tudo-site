@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Antes que a IA Reescreva Tudo</title>
+<meta name="description" content="Área do leitor do livro Antes que a IA Reescreva Tudo, de Diego Marques de Carvalho.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0f2c47">
+<link rel="icon" href="img/icone.svg" type="image/svg+xml">
+<link rel="preload" href="fontes/orbit-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script type="module" src="js/app.js"></script>
+</head>
+<body data-config="__CONFIG__" data-estado="carregando">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<div class="barra-capa" aria-hidden="true"></div>
+
+<!-- Tela de entrada: a única parte do site que não está cifrada. -->
+<div id="portao" class="portao">
+  <div class="portao__palco">
+    <figure class="portao__capa">
+      <img src="img/capa.webp" srcset="img/capa-320.webp 320w, img/capa.webp 640w" sizes="(max-width: 700px) 9rem, 22rem" width="640" height="1024" alt="Capa do livro: um polvo desenhado a bico de pena, com circuitos nos tentáculos, sobre a faixa com o título Antes que a IA Reescreva Tudo.">
+    </figure>
+
+    <main class="portao__conteudo" id="conteudo" tabindex="-1">
+      <p class="portao__autor">Diego Marques de Carvalho</p>
+      <h1 class="portao__titulo">Área do leitor</h1>
+      <p class="portao__intro">Este site acompanha o livro. Digite o código impresso nele e faça um cadastro rápido para abrir o mapa das referências, os capítulos, as ferramentas e o blog.</p>
+
+      <ol class="passos" aria-label="Etapas">
+        <li data-passo="1" aria-current="step"><span>1</span> Código do livro</li>
+        <li data-passo="2"><span>2</span> Nome e e-mail</li>
+        <li data-passo="3"><span>3</span> Abrir o site</li>
+      </ol>
+
+      <form class="formulario" id="form-codigo" novalidate>
+        <div class="campo campo--codigo">
+          <label for="codigo">Código de acesso</label>
+          <p class="ajuda" id="codigo-ajuda">Está impresso no livro. Seis caracteres, letras e números.</p>
+          <div class="codigo-caixas" id="codigo-caixas" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <input id="codigo" name="codigo" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="6" aria-describedby="codigo-ajuda codigo-erro" required>
+          <p class="erro-campo" id="codigo-erro" aria-live="polite"></p>
+        </div>
+        <button class="botao" type="submit">Conferir código</button>
+      </form>
+
+      <form class="formulario" id="form-cadastro" novalidate hidden>
+        <fieldset>
+          <legend class="visualmente-oculto">Cadastro do leitor</legend>
+          <div class="campo">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" autocomplete="name" maxlength="120" aria-describedby="nome-erro" required>
+            <p class="erro-campo" id="nome-erro" aria-live="polite"></p>
+          </div>
+          <div class="campo">
+            <label for="email">E-mail</label>
+            <p class="ajuda" id="email-ajuda">Usado para liberar o acesso e, se você quiser, avisar sobre atualizações.</p>
+            <input id="email" name="email" type="email" autocomplete="email" maxlength="160" aria-describedby="email-ajuda email-erro" required>
+            <p class="erro-campo" id="email-erro" aria-live="polite"></p>
+          </div>
+          <div class="marcar">
+            <input id="consentimento" name="consentimento" type="checkbox" aria-describedby="consentimento-erro" required>
+            <label for="consentimento">Concordo que meu nome e meu e-mail sejam guardados para liberar o site, como descrito na <button type="button" class="link" data-abrir="privacidade">página de privacidade</button>.</label>
+          </div>
+          <p class="erro-campo" id="consentimento-erro" aria-live="polite"></p>
+          <div class="marcar">
+            <input id="novidades" name="novidades" type="checkbox">
+            <label for="novidades">Quero receber por e-mail os avisos de atualização do livro (opcional).</label>
+          </div>
+        </fieldset>
+        <div class="acoes-form">
+          <button class="botao" type="submit">Abrir o site</button>
+          <button class="link" type="button" id="voltar-codigo">Voltar ao código</button>
+        </div>
+      </form>
+
+      <div class="aviso" id="resultado" role="status" aria-live="polite"></div>
+      <p class="portao__rodape"><button type="button" class="link" data-abrir="privacidade">Privacidade</button> · Dúvidas: <a href="mailto:__CONTATO__">__CONTATO__</a></p>
+    </main>
+  </div>
+  <div class="faixa-capa" aria-hidden="true"><span>Antes que a IA</span><span>Reescreva Tudo</span></div>
+</div>
+
+<!-- O site, montado depois de decifrar o pacote. -->
+<div id="app" class="app" hidden>
+  <header class="topo">
+    <div class="topo__faixa">
+      <a class="marca" href="#/">Antes que a IA<br>Reescreva Tudo</a>
+    </div>
+    <nav class="menu" aria-label="Principal">
+      <ul>
+        <li><a href="#/" data-rota="inicio">Início</a></li>
+        <li><a href="#/mapa" data-rota="mapa">Mapa</a></li>
+        <li><a href="#/capitulos" data-rota="capitulos">Capítulos</a></li>
+        <li><a href="#/ferramentas" data-rota="ferramentas">Ferramentas</a></li>
+        <li><a href="#/blog" data-rota="blog">Blog</a></li>
+      </ul>
+      <button type="button" class="busca-atalho" id="abrir-paleta" aria-keyshortcuts="Control+K Meta+K">
+        <span>Buscar</span><kbd>Ctrl K</kbd>
+      </button>
+    </nav>
+  </header>
+  <div class="progresso" id="progresso" aria-hidden="true"></div>
+  <main id="vista" class="vista" tabindex="-1"></main>
+  <footer class="rodape">
+    <div class="rodape__dentro">
+      <p>Diego Marques de Carvalho, 2026. Contato: <a href="mailto:__CONTATO__">__CONTATO__</a></p>
+      <ul>
+        <li><a href="#/privacidade">Privacidade</a></li>
+        <li><button type="button" class="link" id="abrir-atalhos">Atalhos de teclado</button></li>
+        <li><a id="link-errata" href="#">Reportar errata</a></li>
+        <li><button type="button" class="link" id="sair">Sair deste navegador</button></li>
+      </ul>
+    </div>
+  </footer>
+</div>
+
+<dialog class="dialogo dialogo--paleta" id="paleta" aria-label="Buscar no site">
+  <form method="dialog" class="paleta">
+    <label class="visualmente-oculto" for="paleta-busca">Buscar capítulos, obras, conceitos, ferramentas e posts</label>
+    <input id="paleta-busca" type="search" autocomplete="off" placeholder="Buscar capítulo, obra, conceito, post…" role="combobox" aria-expanded="true" aria-controls="paleta-lista" aria-autocomplete="list">
+    <ul id="paleta-lista" role="listbox" aria-label="Resultados"></ul>
+    <p class="paleta__dica"><kbd>↑</kbd> <kbd>↓</kbd> para escolher, <kbd>Enter</kbd> para abrir, <kbd>Esc</kbd> para fechar</p>
+  </form>
+</dialog>
+
+<dialog class="dialogo" id="atalhos" aria-labelledby="atalhos-titulo">
+  <h2 id="atalhos-titulo">Atalhos de teclado</h2>
+  <dl class="atalhos">
+    <dt><kbd>Ctrl K</kbd> ou <kbd>/</kbd></dt><dd>Buscar no site</dd>
+    <dt><kbd>g</kbd> depois <kbd>i</kbd></dt><dd>Início</dd>
+    <dt><kbd>g</kbd> depois <kbd>m</kbd></dt><dd>Mapa das referências</dd>
+    <dt><kbd>g</kbd> depois <kbd>c</kbd></dt><dd>Capítulos</dd>
+    <dt><kbd>g</kbd> depois <kbd>f</kbd></dt><dd>Ferramentas</dd>
+    <dt><kbd>g</kbd> depois <kbd>b</kbd></dt><dd>Blog</dd>
+    <dt><kbd>Esc</kbd></dt><dd>No mapa, volta à visão inteira</dd>
+    <dt><kbd>?</kbd></dt><dd>Esta lista</dd>
+  </dl>
+  <form method="dialog"><button class="botao botao--linha">Fechar</button></form>
+</dialog>
+
+<dialog class="dialogo dialogo--texto" id="privacidade" aria-labelledby="priv-titulo">
+  <h2 id="priv-titulo">Privacidade</h2>
+  <h3>O que guardamos</h3>
+  <p>Ao abrir o site, você informa nome e e-mail. Esses dados, a data do cadastro e a sua escolha sobre receber avisos de atualização vão para uma planilha privada do autor, no Google. O código do livro é conferido, mas não fica guardado.</p>
+  <h3>Para que usamos</h3>
+  <p>O cadastro serve para liberar o site. Se você marcar a opção de avisos, o e-mail também recebe as notícias de atualização do livro. Os dados não são vendidos nem repassados.</p>
+  <h3>O que fica no seu navegador</h3>
+  <p>Depois do cadastro, o navegador guarda a chave que abre o site, o seu primeiro nome e o que você marcar nas ferramentas, para não pedir o código de novo. O botão "Sair deste navegador", no rodapé, apaga tudo isso.</p>
+  <h3>O que não usamos</h3>
+  <p>O site não usa cookies de publicidade nem ferramentas de rastreamento. Fontes e bibliotecas ficam no próprio site; a única chamada externa é o envio do cadastro.</p>
+  <h3>Como pedir correção ou exclusão</h3>
+  <p>Escreva para <a href="mailto:__CONTATO__">__CONTATO__</a> pedindo para consultar, corrigir ou apagar seus dados.</p>
+  <form method="dialog"><button class="botao botao--linha">Fechar</button></form>
+</dialog>
+
+<noscript><p class="aviso">Este site precisa de JavaScript para abrir o conteúdo do livro.</p></noscript>
+</body>
+</html>

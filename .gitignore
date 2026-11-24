@@ -1,0 +1,6 @@
+# Conteúdo aberto do livro: fica fora do repositório público.
+conteudo/
+# Montagem de teste: traz a chave embrulhada com o código do livro.
+_previa/
+__pycache__/
+.chave-do-site
