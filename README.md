@@ -4,7 +4,7 @@
 referências, capítulos, ferramentas dos apêndices e blog.
 
 O site inteiro fica cifrado. Quem abre o endereço vê só a tela de
-entrada; o conteúdo está em `docs/cofre.bin`, cifrado com AES-256-GCM.
+entrada; o conteúdo está em `docs/cofre.json`, cifrado com AES-256-GCM.
 A chave fica no Apps Script do autor, que só a entrega depois de gravar
 o nome e o e-mail do leitor numa planilha. Por isso o repositório pode
 ser público: aqui não há texto aberto do livro.

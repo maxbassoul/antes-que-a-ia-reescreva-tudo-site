@@ -1,14 +1,15 @@
-// Abre o pacote cifrado do site (cofre.bin): 12 bytes de vetor inicial,
-// depois o JSON comprimido com gzip e cifrado com AES-256-GCM.
+// Abre o pacote cifrado do site (cofre.json, campo "dados" em base64):
+// 12 bytes de vetor inicial, depois o JSON comprimido com gzip e
+// cifrado com AES-256-GCM.
 import { deBase64 } from "./util.js";
 
 let bruto;
 
 async function pacoteCifrado() {
   if (!bruto) {
-    const resposta = await fetch("cofre.bin", { cache: "no-cache" });
+    const resposta = await fetch("cofre.json", { cache: "no-cache" });
     if (!resposta.ok) throw new Error("cofre indisponível");
-    bruto = new Uint8Array(await resposta.arrayBuffer());
+    bruto = deBase64((await resposta.json()).dados);
   }
   return bruto;
 }

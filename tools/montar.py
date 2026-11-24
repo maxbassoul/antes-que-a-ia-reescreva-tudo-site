@@ -9,7 +9,7 @@ para o git: só docs/, com o pacote já cifrado. O GitHub Pages publica
 a pasta docs/ do ramo main.
 
 Só a tela de entrada fica aberta. Páginas, posts e dados vão num único
-pacote (cofre.bin): JSON comprimido com gzip e cifrado com AES-256-GCM.
+pacote (cofre.json): JSON comprimido com gzip e cifrado com AES-256-GCM.
 A chave (SITE_KEY, 32 bytes em base64) fica com o Apps Script, que só a
 entrega depois de gravar o cadastro do leitor.
 
@@ -107,7 +107,9 @@ def main():
               "repositorio": REPOSITORIO}
     bruto = json.dumps(pacote, ensure_ascii=False,
                        separators=(",", ":")).encode()
-    (SAIDA / "cofre.bin").write_bytes(cifrar(k, gzip.compress(bruto, 9)))
+    (SAIDA / "cofre.json").write_text(json.dumps(
+        {"versao": 1, "dados": b64(cifrar(k, gzip.compress(bruto, 9)))}),
+        encoding="utf-8")
 
     if TESTE:
         sal = secrets.token_bytes(16)
@@ -132,9 +134,9 @@ def main():
     (SAIDA / "index.html").write_text(modelo, encoding="utf-8")
     (SAIDA / ".nojekyll").write_text("")
 
-    tamanho = (SAIDA / "cofre.bin").stat().st_size
+    tamanho = (SAIDA / "cofre.json").stat().st_size
     print(f"{SAIDA.name}/ montado ({'teste' if TESTE else 'produção'}); "
-          f"cofre.bin com {tamanho // 1024} KB")
+          f"cofre.json com {tamanho // 1024} KB")
 
 
 if __name__ == "__main__":
